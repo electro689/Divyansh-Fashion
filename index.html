@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Divyyansh Fashion — Pune's Premier Fashion Destination</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --rose: #C8536A;
+    --rose-light: #F2B8C2;
+    --rose-dark: #8B2B3E;
+    --gold: #C9A84C;
+    --gold-light: #F0D98A;
+    --cream: #FDF6EE;
+    --ink: #1A1118;
+    --ink-soft: #3D2B38;
+    --mist: #F5EEF0;
+    --card-bg: #FFFFFF;
+    --nav-bg: rgba(253,246,238,0.85);
+    --text: #1A1118;
+    --text-muted: #6B5560;
+    --border: #E8D8DC;
+  }
+  [data-theme="dark"] {
+    --cream: #140E12;
+    --mist: #1E1520;
+    --card-bg: #241A21;
+    --nav-bg: rgba(20,14,18,0.88);
+    --text: #F5EEF0;
+    --text-muted: #C4A8B5;
+    --border: #3D2B38;
+    --ink: #F5EEF0;
+    --ink-soft: #D4B8C4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+  }
+  h1,h2,h3 { font-family: 'Playfair Display', serif; }
+
+  /* NAV */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 68px;
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--rose); letter-spacing: -0.5px; }
+  .logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-actions { display: flex; align-items: center; gap: 1rem; }
+  .btn-icon { background: none; border: none; cursor: pointer; color: var(--text); padding: 8px; border-radius: 8px; transition: background 0.2s; position: relative; }
+  .btn-icon:hover { background: var(--mist); }
+  .cart-badge {
+    position: absolute; top: 2px; right: 2px;
+    background: var(--rose); color: #fff;
+    font-size: 0.65rem; font-weight: 700;
+    width: 17px; height: 17px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    display: none;
+  }
+  .btn-primary {
+    background: var(--rose); color: #fff;
+    border: none; padding: 10px 22px; border-radius: 30px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.25s; letter-spacing: 0.3px;
+  }
+  .btn-primary:hover { background: var(--rose-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,83,106,0.35); }
+  #mobile-menu-btn { display: none; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--mist) 100%);
+    display: flex; align-items: center; position: relative; overflow: hidden;
+    padding-top: 68px;
+  }
+  .hero-bg-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); pointer-events: none; opacity: 0.5;
+  }
+  .orb1 { width: 600px; height: 600px; background: var(--rose-light); top: -200px; right: -100px; }
+  .orb2 { width: 400px; height: 400px; background: var(--gold-light); bottom: -100px; left: -50px; }
+  .hero-inner {
+    max-width: 1400px; margin: 0 auto; padding: 5rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 6px 16px; border-radius: 30px; font-size: 0.8rem; font-weight: 600;
+    color: var(--rose); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .hero-tag span { width: 8px; height: 8px; background: var(--rose); border-radius: 50%; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero-h1 { font-size: clamp(2.8rem, 5vw, 5rem); line-height: 1.1; color: var(--ink); font-weight: 900; margin-bottom: 1.5rem; }
+  .hero-h1 em { color: var(--rose); font-style: italic; }
+  .hero-sub { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-outline {
+    background: transparent; border: 2px solid var(--rose); color: var(--rose);
+    padding: 10px 22px; border-radius: 30px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.25s;
+  }
+  .btn-outline:hover { background: var(--rose); color: #fff; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; }
+  .stat-item { text-align: left; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--rose); display: block; }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.5px; }
+  .hero-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; position: relative;
+  }
+  .hero-card {
+    background: var(--card-bg); border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+  }
+  .hero-card:hover { transform: translateY(-6px); }
+  .hero-card-img {
+    height: 220px; display: flex; align-items: center; justify-content: center;
+    font-size: 4rem; background: linear-gradient(135deg, var(--mist), var(--rose-light));
+  }
+  .hero-card:nth-child(2) { margin-top: 40px; }
+  .hero-card-body { padding: 1rem 1.2rem; }
+  .hero-card-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+  .hero-card-price { color: var(--rose); font-weight: 700; font-size: 1rem; }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; }
+  .section-inner { max-width: 1300px; margin: 0 auto; }
+  .section-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--ink); line-height: 1.2; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.7; }
+
+  /* FEATURES / WHY CHOOSE US */
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .feature-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px;
+    padding: 2rem 1.5rem; transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .feature-card:hover::before { transform: scaleX(1); }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(200,83,106,0.12); }
+  .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .feature-title { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
+  .feature-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* PRODUCTS */
+  #products { background: var(--mist); }
+  .products-controls {
+    display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+    margin-bottom: 2rem;
+  }
+  .search-box {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 16px; flex: 1; min-width: 220px;
+  }
+  .search-box input {
+    border: none; background: transparent; font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--text); outline: none; flex: 1;
+  }
+  .search-box input::placeholder { color: var(--text-muted); }
+  .filter-select {
+    background: var(--card-bg); border: 1px solid var(--border); color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.875rem;
+    padding: 10px 16px; border-radius: 12px; cursor: pointer; outline: none;
+  }
+  .filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .filter-tab {
+    padding: 7px 18px; border-radius: 30px; font-size: 0.8rem; font-weight: 600;
+    border: 1px solid var(--border); background: var(--card-bg); color: var(--text-muted);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .filter-tab.active, .filter-tab:hover { background: var(--rose); color: #fff; border-color: var(--rose); }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  }
+  .product-card {
+    background: var(--card-bg); border-radius: 18px; overflow: hidden;
+    border: 1px solid var(--border); transition: all 0.3s; position: relative;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.12); }
+  .product-img-wrap {
+    position: relative; overflow: hidden; height: 240px;
+    background: linear-gradient(135deg, var(--mist), var(--rose-light));
+    display: flex; align-items: center; justify-content: center; font-size: 5rem;
+    cursor: pointer;
+  }
+  .product-img-wrap::after {
+    content: '🔍 Quick View';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(200,83,106,0.9); color: #fff; text-align: center;
+    padding: 12px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+    transform: translateY(100%); transition: transform 0.25s;
+  }
+  .product-card:hover .product-img-wrap::after { transform: translateY(0); }
+  .product-wish {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 50%; width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1.1rem; transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .product-wish:hover, .product-wish.active { background: var(--rose); border-color: var(--rose); }
+  .product-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--rose); color: #fff;
+    font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .product-body { padding: 1.2rem; }
+  .product-cat { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--rose); font-weight: 700; margin-bottom: 4px; }
+  .product-name { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .product-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 10px; }
+  .stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 1px; }
+  .rating-count { font-size: 0.75rem; color: var(--text-muted); }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--rose); font-size: 1.1rem; }
+  .product-price-old { font-size: 0.8rem; color: var(--text-muted); text-decoration: line-through; margin-left: 4px; }
+  .btn-cart {
+    background: var(--rose); color: #fff; border: none;
+    width: 36px; height: 36px; border-radius: 50%;
+    font-size: 1.1rem; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .btn-cart:hover { background: var(--rose-dark); transform: scale(1.1); }
+  .load-more {
+    text-align: center; margin-top: 3rem;
+  }
+  .products-count { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+  /* TESTIMONIALS */
+  .testimonials-track { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1rem; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .testimonials-track::-webkit-scrollbar { display: none; }
+  .testimonial-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px;
+    padding: 2rem; min-width: 320px; scroll-snap-align: start; flex-shrink: 0;
+    transition: all 0.3s; position: relative;
+  }
+  .testimonial-card::before {
+    content: '"'; font-family: 'Playfair Display', serif; font-size: 5rem;
+    color: var(--rose-light); line-height: 1; position: absolute; top: 10px; left: 20px;
+    opacity: 0.5;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(200,83,106,0.1); }
+  .testimonial-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; position: relative; z-index: 1; padding-top: 1.5rem; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 1rem;
+  }
+  .author-name { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+  .author-meta { font-size: 0.75rem; color: var(--text-muted); }
+  .carousel-controls { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+  .carousel-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 2px solid var(--border); background: var(--card-bg);
+    color: var(--text); cursor: pointer; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  .carousel-btn:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
+
+  /* CONTACT */
+  #contact { background: var(--mist); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 0.8rem; font-weight: 600; color: var(--text); letter-spacing: 0.5px; }
+  .form-input {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text);
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--rose); }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-icon {
+    width: 48px; height: 48px; background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0; color: #fff;
+  }
+  .contact-label { font-weight: 700; font-size: 0.85rem; color: var(--text); margin-bottom: 2px; }
+  .contact-val { font-size: 0.9rem; color: var(--text-muted); }
+
+  /* CART SIDEBAR */
+  #cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 2000; display: none; opacity: 0; transition: opacity 0.3s;
+  }
+  #cart-overlay.open { display: flex; justify-content: flex-end; opacity: 1; }
+  #cart-sidebar {
+    background: var(--card-bg); width: min(420px, 100vw);
+    height: 100%; display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+    overflow: hidden;
+  }
+  #cart-overlay.open #cart-sidebar { transform: translateX(0); }
+  .cart-header {
+    padding: 1.5rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cart-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--text); }
+  .cart-body { flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .cart-empty { text-align: center; padding: 3rem; color: var(--text-muted); }
+  .cart-item {
+    display: flex; gap: 1rem; align-items: center;
+    background: var(--mist); border-radius: 14px; padding: 1rem;
+  }
+  .cart-item-img { font-size: 2.5rem; width: 60px; text-align: center; }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+  .cart-item-price { color: var(--rose); font-weight: 700; font-size: 0.9rem; }
+  .cart-item-qty { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .qty-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; width: 26px; height: 26px; cursor: pointer; font-size: 0.9rem; color: var(--text); display: flex; align-items: center; justify-content: center; }
+  .qty-num { font-weight: 700; font-size: 0.9rem; color: var(--text); min-width: 20px; text-align: center; }
+  .cart-remove { background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.2rem; padding: 4px; }
+  .cart-footer { padding: 1.5rem; border-top: 1px solid var(--border); }
+  .cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  .cart-total span:last-child { color: var(--rose); }
+
+  /* CHECKOUT MODAL */
+  #checkout-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    z-index: 3000; display: none; align-items: center; justify-content: center; padding: 1rem;
+  }
+  #checkout-modal.open { display: flex; }
+  .checkout-box {
+    background: var(--card-bg); border-radius: 24px; width: min(700px, 100%);
+    max-height: 90vh; overflow-y: auto; position: relative;
+  }
+  .checkout-header { padding: 2rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
+  .checkout-steps { display: flex; gap: 8px; }
+  .step {
+    padding: 6px 18px; border-radius: 30px; font-size: 0.8rem; font-weight: 700;
+    border: 2px solid var(--border); color: var(--text-muted);
+  }
+  .step.active { background: var(--rose); border-color: var(--rose); color: #fff; }
+  .step.done { background: #22C55E; border-color: #22C55E; color: #fff; }
+  .checkout-body { padding: 2rem; }
+  .checkout-section { margin-bottom: 2rem; }
+  .checkout-section-title { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 1rem; }
+  .checkout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .payment-options { display: flex; flex-direction: column; gap: 0.75rem; }
+  .payment-opt {
+    display: flex; align-items: center; gap: 12px;
+    border: 2px solid var(--border); border-radius: 14px; padding: 14px 16px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .payment-opt:hover, .payment-opt.selected { border-color: var(--rose); background: rgba(200,83,106,0.05); }
+  .payment-opt input[type="radio"] { accent-color: var(--rose); width: 18px; height: 18px; }
+  .payment-icon { font-size: 1.5rem; }
+  .payment-label { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+  .card-fields { display: grid; gap: 1rem; margin-top: 1rem; }
+  .order-summary { background: var(--mist); border-radius: 14px; padding: 1.5rem; margin-bottom: 2rem; }
+  .order-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .order-item:last-child { border-bottom: none; font-weight: 700; color: var(--rose); font-size: 1rem; }
+
+  /* SUCCESS */
+  #success-screen {
+    display: none; flex-direction: column; align-items: center;
+    justify-content: center; padding: 3rem; text-align: center;
+  }
+  #success-screen.show { display: flex; }
+  .success-icon { font-size: 5rem; animation: bounce 0.6s ease; margin-bottom: 1rem; }
+  @keyframes bounce { 0%{transform:scale(0)} 60%{transform:scale(1.2)} 100%{transform:scale(1)} }
+  .success-order { background: var(--mist); border-radius: 14px; padding: 1.5rem; width: 100%; margin-top: 1rem; }
+
+  /* QUICK VIEW MODAL */
+  #quickview-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    z-index: 3000; display: none; align-items: center; justify-content: center; padding: 1rem;
+  }
+  #quickview-modal.open { display: flex; }
+  .quickview-box {
+    background: var(--card-bg); border-radius: 24px; width: min(700px, 100%);
+    display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+    max-height: 90vh;
+  }
+  .quickview-img {
+    background: linear-gradient(135deg, var(--mist), var(--rose-light));
+    display: flex; align-items: center; justify-content: center; font-size: 8rem;
+    min-height: 350px;
+  }
+  .quickview-info { padding: 2rem; overflow-y: auto; }
+  .close-btn {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%;
+    width: 36px; height: 36px; cursor: pointer; font-size: 1.2rem; color: var(--text);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qty-selector { display: flex; align-items: center; gap: 12px; margin: 1rem 0; }
+  .qty-full-btn { background: var(--mist); border: 1px solid var(--border); border-radius: 8px; width: 36px; height: 36px; cursor: pointer; font-size: 1.1rem; color: var(--text); display: flex; align-items: center; justify-content: center; }
+
+  /* FLOAT WHATSAPP */
+  #whatsapp-float {
+    position: fixed; bottom: 100px; right: 24px; z-index: 500;
+    background: #25D366; color: #fff; border-radius: 50%;
+    width: 54px; height: 54px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    cursor: pointer; transition: transform 0.2s;
+    text-decoration: none;
+  }
+  #whatsapp-float:hover { transform: scale(1.1); }
+
+  /* SCROLL TO TOP */
+  #scroll-top {
+    position: fixed; bottom: 28px; right: 24px; z-index: 500;
+    background: var(--rose); color: #fff; border-radius: 50%;
+    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; cursor: pointer; transition: all 0.2s;
+    opacity: 0; pointer-events: none; border: none;
+    box-shadow: 0 4px 14px rgba(200,83,106,0.4);
+  }
+  #scroll-top.visible { opacity: 1; pointer-events: auto; }
+  #scroll-top:hover { transform: translateY(-3px); }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: #fff; padding: 4rem 2rem 2rem; }
+  .footer-inner { max-width: 1300px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--rose); margin-bottom: 1rem; }
+  .footer-desc { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .footer-heading { font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--rose); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+
+  /* MOBILE NAV */
+  #mobile-nav {
+    display: none; position: fixed; inset: 0; background: var(--cream);
+    z-index: 999; flex-direction: column; padding: 5rem 2rem 2rem;
+    gap: 2rem;
+  }
+  #mobile-nav.open { display: flex; }
+  #mobile-nav a { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--text); text-decoration: none; }
+
+  /* REVEAL ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    #mobile-menu-btn { display: flex; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .checkout-grid { grid-template-columns: 1fr; }
+    .quickview-box { grid-template-columns: 1fr; }
+    .quickview-img { min-height: 200px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .products-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .product-img-wrap { height: 170px; font-size: 3.5rem; }
+    section { padding: 4rem 1rem; }
+  }
+
+  /* TRUST BADGES */
+  .trust-bar {
+    background: var(--rose); color: #fff;
+    overflow: hidden; white-space: nowrap;
+  }
+  .trust-track {
+    display: inline-flex; gap: 3rem; padding: 12px 0;
+    animation: marquee 20s linear infinite;
+  }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  .trust-item { font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-visual {
+    background: linear-gradient(135deg, var(--mist), var(--rose-light));
+    border-radius: 32px; height: 400px; display: flex; align-items: center; justify-content: center;
+    font-size: 8rem; position: relative; overflow: hidden;
+  }
+  .about-visual::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8536A' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .about-badge {
+    position: absolute; bottom: 20px; right: 20px;
+    background: var(--card-bg); border-radius: 16px; padding: 1rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .about-badge-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--rose); }
+  .about-badge-label { font-size: 0.75rem; color: var(--text-muted); }
+  .about-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+  .about-list li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-muted); }
+  .about-list li::before { content: '✓'; color: var(--rose); font-weight: 700; }
+
+  /* COUNTER */
+  .counters-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .counter-card {
+    background: var(--card-bg); border-radius: 20px; padding: 2rem; text-align: center;
+    border: 1px solid var(--border);
+  }
+  .counter-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--rose); }
+  .counter-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="logo">Divyyansh <span>Fashion</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-icon" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="btn-icon" onclick="openCart()" title="Cart">
+        🛒
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+      <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+      <button class="btn-icon" id="mobile-menu-btn" onclick="toggleMobileNav()">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div id="mobile-nav">
+  <a href="#home" onclick="toggleMobileNav()">Home</a>
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#products" onclick="toggleMobileNav()">Products</a>
+  <a href="#testimonials" onclick="toggleMobileNav()">Reviews</a>
+  <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+  <button class="btn-primary" onclick="toggleMobileNav();document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now ✨</button>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar" style="margin-top:68px">
+  <div class="trust-track">
+    <span class="trust-item">🏆 Pune's Biggest Hosiery Store</span>
+    <span class="trust-item">✨ 500+ Happy Customers</span>
+    <span class="trust-item">🎀 Premium Brands</span>
+    <span class="trust-item">🚚 Free Delivery Above ₹999</span>
+    <span class="trust-item">💎 Genuine Products Guaranteed</span>
+    <span class="trust-item">🏆 Pune's Biggest Hosiery Store</span>
+    <span class="trust-item">✨ 500+ Happy Customers</span>
+    <span class="trust-item">🎀 Premium Brands</span>
+    <span class="trust-item">🚚 Free Delivery Above ₹999</span>
+    <span class="trust-item">💎 Genuine Products Guaranteed</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-orb orb1"></div>
+  <div class="hero-bg-orb orb2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag"><span></span> Pune's Premier Fashion Store</div>
+      <h1 class="hero-h1">Style That <em>Empowers</em> Every Woman</h1>
+      <p class="hero-sub">Discover Pune's biggest collection of readymade garments, premium lingerie, and everyday essentials — where quality meets comfort and fashion meets affordability.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore Collection →</button>
+        <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Our Story</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-num" id="cnt1">0</span><span class="stat-label">Products</span></div>
+        <div class="stat-item"><span class="stat-num" id="cnt2">0</span><span class="stat-label">Happy Customers</span></div>
+        <div class="stat-item"><span class="stat-num" id="cnt3">0</span><span class="stat-label">Years of Trust</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-img">👗</div>
+        <div class="hero-card-body">
+          <div class="hero-card-name">Elegant Dress Collection</div>
+          <div class="hero-card-price">₹799 onwards</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-img">🩱</div>
+        <div class="hero-card-body">
+          <div class="hero-card-name">Lingerie & Intimates</div>
+          <div class="hero-card-price">₹299 onwards</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-img">👚</div>
+        <div class="hero-card-body">
+          <div class="hero-card-name">Casual Wear</div>
+          <div class="hero-card-price">₹499 onwards</div>
+        </div>
+      </div>
+      <div class="hero-card" style="margin-top:40px">
+        <div class="hero-card-img">🌙</div>
+        <div class="hero-card-body">
+          <div class="hero-card-name">Nightwear & Sleepwear</div>
+          <div class="hero-card-price">₹599 onwards</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual">
+        <span style="position:relative;z-index:1">👑</span>
+        <div class="about-badge">
+          <div class="about-badge-num">5★</div>
+          <div class="about-badge-label">Google Rated</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag reveal">Our Story</div>
+        <h2 class="section-title reveal">Undri–Pisoli's Most Loved Fashion Destination</h2>
+        <p class="section-sub reveal">Divyyansh Fashion is Pune's biggest hosiery and apparel store, located in Undri-Pisoli. We offer a curated range of stylish readymade garments and elegant lingerie — blending quality craftsmanship with accessible pricing so every woman can dress with confidence.</p>
+        <ul class="about-list reveal">
+          <li>Vast selection including Jockey, backless & strapless bras, nightwear</li>
+          <li>Men's and women's innerwear, activewear, and daily essentials</li>
+          <li>Pro-active, friendly, and knowledgeable sales staff</li>
+          <li>Owner personally ensures every customer is satisfied</li>
+          <li>Fresh stock updated regularly with the latest designs</li>
+          <li>Genuine products at fair, affordable prices — always</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COUNTERS -->
+    <div class="counters-grid reveal" style="margin-top:4rem">
+      <div class="counter-card"><div class="counter-num">1000+</div><div class="counter-label">Products In Stock</div></div>
+      <div class="counter-card"><div class="counter-num">500+</div><div class="counter-label">Happy Customers</div></div>
+      <div class="counter-card"><div class="counter-num">20+</div><div class="counter-label">Premium Brands</div></div>
+      <div class="counter-card"><div class="counter-num">5★</div><div class="counter-label">Average Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section style="background:var(--mist)">
+  <div class="section-inner">
+    <div style="text-align:center">
+      <div class="section-tag reveal">Why Choose Us</div>
+      <h2 class="section-title reveal" style="margin:0 auto 1rem">What Our Customers Say Backs Us Up</h2>
+      <p class="section-sub reveal" style="margin:0 auto">Real reasons, backed by real reviews from 500+ satisfied shoppers across Pune.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🏆</div>
+        <div class="feature-title">Largest Collection</div>
+        <div class="feature-desc">Pune's biggest hosiery & apparel store with 1000+ products across categories for men and women.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">💎</div>
+        <div class="feature-title">Genuine Products</div>
+        <div class="feature-desc">100% authentic brands including Jockey and more. No counterfeits — ever. Quality you can trust.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">💰</div>
+        <div class="feature-title">Affordable Prices</div>
+        <div class="feature-desc">Premium quality at fair rates. Seasonal discounts and combo deals make fashion accessible for all.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-title">Owner-Led Service</div>
+        <div class="feature-desc">The owner personally oversees every customer interaction — a rare dedication you'll love.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🆕</div>
+        <div class="feature-title">Fresh Stock Always</div>
+        <div class="feature-desc">New arrivals added regularly. From backless bras to stylish nightwear — always something new.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📍</div>
+        <div class="feature-title">Conveniently Located</div>
+        <div class="feature-desc">Easy to find in Undri-Pisoli, Pune. Walk in any day for a premium in-store experience.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem">
+      <div>
+        <div class="section-tag reveal">Product Catalog</div>
+        <h2 class="section-title reveal" style="margin-bottom:0">Shop Our Collection</h2>
+      </div>
+      <div class="products-count" id="products-count">Showing 20 of 1000+ products</div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="products-controls">
+      <div class="search-box">
+        🔍 <input type="text" placeholder="Search products..." id="search-input" oninput="filterProducts()"/>
+      </div>
+      <select class="filter-select" id="sort-select" onchange="filterProducts()">
+        <option value="default">Sort: Featured</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="rating">Highest Rated</option>
+        <option value="newest">Newest First</option>
+      </select>
+      <select class="filter-select" id="price-filter" onchange="filterProducts()">
+        <option value="all">All Prices</option>
+        <option value="0-500">Under ₹500</option>
+        <option value="500-1000">₹500 – ₹1000</option>
+        <option value="1000-2000">₹1000 – ₹2000</option>
+        <option value="2000+">₹2000+</option>
+      </select>
+    </div>
+    <div class="filter-tabs" id="category-tabs">
+      <div class="filter-tab active" onclick="setCategory('All', this)">All</div>
+      <div class="filter-tab" onclick="setCategory('Dresses', this)">Dresses</div>
+      <div class="filter-tab" onclick="setCategory('Lingerie', this)">Lingerie</div>
+      <div class="filter-tab" onclick="setCategory('Nightwear', this)">Nightwear</div>
+      <div class="filter-tab" onclick="setCategory('Casual Wear', this)">Casual Wear</div>
+      <div class="filter-tab" onclick="setCategory('Innerwear', this)">Innerwear</div>
+      <div class="filter-tab" onclick="setCategory('Activewear', this)">Activewear</div>
+      <div class="filter-tab" onclick="setCategory('Kidswear', this)">Kidswear</div>
+    </div>
+
+    <div class="products-grid" id="products-grid"></div>
+    <div class="load-more">
+      <button class="btn-primary" id="load-more-btn" onclick="loadMore()" style="padding:14px 40px;font-size:0.95rem">Load More Products</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--mist)">
+  <div class="section-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem">
+      <div>
+        <div class="section-tag">Customer Love</div>
+        <h2 class="section-title" style="margin-bottom:0">What Pune Says About Us</h2>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollCarousel(-1)">←</button>
+        <button class="carousel-btn" onclick="scrollCarousel(1)">→</button>
+      </div>
+    </div>
+    <div class="testimonials-track" id="testimonials-track">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag reveal">Get In Touch</div>
+    <h2 class="section-title reveal">Visit Us Or Drop a Message</h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Our Store</div>
+            <div class="contact-val">Divyyansh Fashion, Undri-Pisoli Road, Pune, Maharashtra, India</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-val">+91 98765 43210</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Store Hours</div>
+            <div class="contact-val">Mon–Sat: 10:00 AM – 9:00 PM<br>Sunday: 11:00 AM – 7:00 PM</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-val">Chat with us instantly on WhatsApp for product queries.</div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="submitContact(event)">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="Enter your name" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="your@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" placeholder="+91 98765 43210"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input" rows="4" placeholder="Tell us how we can help you..." required style="resize:vertical"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="padding:14px 28px;font-size:0.95rem;align-self:flex-start">Send Message ✉️</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Divyyansh Fashion</div>
+        <p class="footer-desc">Pune's biggest hosiery & apparel store in Undri-Pisoli. Premium fashion for every woman — quality, comfort, and style in every piece.</p>
+        <div style="margin-top:1.5rem;display:flex;gap:0.75rem">
+          <a href="#" style="background:rgba(255,255,255,0.1);border-radius:10px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;text-decoration:none">📘</a>
+          <a href="#" style="background:rgba(255,255,255,0.1);border-radius:10px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;text-decoration:none">📸</a>
+          <a href="#" style="background:rgba(255,255,255,0.1);border-radius:10px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;text-decoration:none">💬</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Shop</div>
+        <ul class="footer-links">
+          <li><a href="#">Dresses</a></li>
+          <li><a href="#">Lingerie</a></li>
+          <li><a href="#">Nightwear</a></li>
+          <li><a href="#">Casual Wear</a></li>
+          <li><a href="#">Innerwear</a></li>
+          <li><a href="#">Activewear</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Returns Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-links">
+          <li><a href="#">Undri-Pisoli, Pune</a></li>
+          <li><a href="#">+91 98765 43210</a></li>
+          <li><a href="#">info@divyyanshfashion.com</a></li>
+          <li><a href="#">Mon–Sun: 10AM–9PM</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Divyyansh Fashion. All rights reserved.</span>
+      <span>Made with ❤️ in Pune</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div id="cart-overlay" onclick="closeCartOnOverlay(event)">
+  <div id="cart-sidebar">
+    <div class="cart-header">
+      <div class="cart-title">Your Cart 🛒</div>
+      <button class="btn-icon" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cart-body">
+      <div class="cart-empty">
+        <div style="font-size:3rem;margin-bottom:0.5rem">🛍️</div>
+        <div style="font-weight:600;color:var(--text);margin-bottom:4px">Cart is empty</div>
+        <div style="font-size:0.85rem">Add some beautiful items!</div>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Total</span><span id="cart-total">₹0</span></div>
+      <button class="btn-primary" style="width:100%;padding:14px;font-size:1rem" onclick="openCheckout()">Proceed to Checkout →</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkout-modal">
+  <div class="checkout-box" style="position:relative">
+    <button class="close-btn" onclick="closeCheckout()">✕</button>
+    <div id="checkout-content">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- QUICK VIEW MODAL -->
+<div id="quickview-modal" onclick="closeQuickView(event)">
+  <div class="quickview-box" style="position:relative" id="quickview-box">
+    <button class="close-btn" onclick="document.getElementById('quickview-modal').classList.remove('open')">✕</button>
+    <div class="quickview-img" id="qv-img">👗</div>
+    <div class="quickview-info">
+      <div class="product-cat" id="qv-cat">Category</div>
+      <h2 id="qv-name" style="font-size:1.4rem;margin-bottom:0.5rem"></h2>
+      <div class="product-rating" id="qv-rating"></div>
+      <div style="font-size:1.5rem;font-weight:900;color:var(--rose);margin-bottom:0.5rem" id="qv-price"></div>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1rem" id="qv-desc"></p>
+      <div class="qty-selector">
+        <button class="qty-full-btn" onclick="changeQv(-1)">−</button>
+        <span id="qv-qty" style="font-weight:700;font-size:1.1rem;color:var(--text);min-width:30px;text-align:center">1</span>
+        <button class="qty-full-btn" onclick="changeQv(1)">+</button>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <button class="btn-primary" style="flex:1;padding:14px" onclick="addFromQV()">Add to Cart 🛒</button>
+        <button class="btn-outline" style="padding:14px 20px" onclick="toggleWishlistQV()">♡</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP -->
+<a id="whatsapp-float" href="https://wa.me/919876543210" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* ===========================
+   DATA
+   =========================== */
+const allProducts = [
+  // DRESSES
+  { id:1, name:"Floral Midi Dress", category:"Dresses", price:1299, oldPrice:1799, rating:4.8, reviews:124, emoji:"👗", badge:"Bestseller", desc:"Elegant floral print midi dress, perfect for every occasion. Breathable fabric with a flattering A-line silhouette.", isNew:false },
+  { id:2, name:"Party Bodycon Dress", category:"Dresses", price:1599, oldPrice:2199, rating:4.7, reviews:98, emoji:"🥻", badge:"New", desc:"Figure-hugging bodycon dress ideal for parties and evening outings. Stretchy, comfortable material.", isNew:true },
+  { id:3, name:"Casual Kurti Dress", category:"Dresses", price:699, oldPrice:999, rating:4.6, reviews:210, emoji:"👘", badge:"", desc:"Comfortable cotton kurti dress for everyday wear. Available in vibrant prints.", isNew:false },
+  { id:4, name:"Maxi Flare Dress", category:"Dresses", price:1899, oldPrice:2499, rating:4.9, reviews:67, emoji:"🩱", badge:"Premium", desc:"Flowing maxi flare dress with intricate embroidery — perfect for festive occasions.", isNew:true },
+  { id:5, name:"Summer Wrap Dress", category:"Dresses", price:899, oldPrice:1299, rating:4.5, reviews:155, emoji:"👗", badge:"", desc:"Light and breezy wrap dress for hot summer days. Effortlessly chic.", isNew:false },
+
+  // LINGERIE
+  { id:6, name:"Backless Strapless Bra", category:"Lingerie", price:499, oldPrice:799, rating:4.9, reviews:312, emoji:"🩲", badge:"Bestseller", desc:"The bra you've been searching for! Perfect backless and strapless support for any outfit.", isNew:false },
+  { id:7, name:"Lace Padded Bra Set", category:"Lingerie", price:649, oldPrice:999, rating:4.7, reviews:187, emoji:"🎀", badge:"", desc:"Elegant lace padded bra with matching panty. Soft, comfortable, and stylish.", isNew:false },
+  { id:8, name:"T-Shirt Bra (Pack of 2)", category:"Lingerie", price:799, oldPrice:1099, rating:4.8, reviews:243, emoji:"👙", badge:"Value Pack", desc:"Seamless T-shirt bras for everyday comfort. Invisible under clothing.", isNew:false },
+  { id:9, name:"Sports Bra – High Impact", category:"Lingerie", price:599, oldPrice:899, rating:4.6, reviews:134, emoji:"🏋️", badge:"", desc:"High-support sports bra for intense workouts. Moisture-wicking fabric.", isNew:true },
+  { id:10, name:"Bridal Lingerie Set", category:"Lingerie", price:1299, oldPrice:1999, rating:4.9, reviews:76, emoji:"💍", badge:"New", desc:"Luxurious bridal lingerie set with intricate detailing. Perfect for special occasions.", isNew:true },
+
+  // NIGHTWEAR
+  { id:11, name:"Satin Night Gown", category:"Nightwear", price:899, oldPrice:1299, rating:4.8, reviews:189, emoji:"🌙", badge:"Bestseller", desc:"Silky satin night gown for the most comfortable sleep. Elegant drape and soft touch.", isNew:false },
+  { id:12, name:"Cotton Pyjama Set", category:"Nightwear", price:699, oldPrice:999, rating:4.7, reviews:256, emoji:"🌸", badge:"", desc:"Breathable 100% cotton pyjama set. Perfect for year-round comfort.", isNew:false },
+  { id:13, name:"Printed Night Suit", category:"Nightwear", price:799, oldPrice:1199, rating:4.6, reviews:143, emoji:"⭐", badge:"", desc:"Fun printed night suit for a cozy bedtime routine. Available in multiple prints.", isNew:false },
+  { id:14, name:"Velvet Robe & Gown Set", category:"Nightwear", price:1499, oldPrice:2099, rating:4.9, reviews:58, emoji:"🌹", badge:"Premium", desc:"Luxurious velvet robe paired with a matching gown. The ultimate comfort statement.", isNew:true },
+
+  // CASUAL WEAR
+  { id:15, name:"Solid Palazzo Pants", category:"Casual Wear", price:549, oldPrice:799, rating:4.7, reviews:298, emoji:"👖", badge:"", desc:"Comfortable palazzo pants for all-day wear. Flowy fit available in bold colors.", isNew:false },
+  { id:16, name:"Printed Crop Top", category:"Casual Wear", price:399, oldPrice:599, rating:4.6, reviews:211, emoji:"👚", badge:"", desc:"Trendy printed crop top to pair with your favorite bottoms. Lightweight fabric.", isNew:false },
+  { id:17, name:"Denim Shirt Dress", category:"Casual Wear", price:1199, oldPrice:1699, rating:4.7, reviews:167, emoji:"🫗", badge:"New", desc:"Versatile denim shirt dress you can wear as a dress or open as a shirt.", isNew:true },
+
+  // INNERWEAR
+  { id:18, name:"Jockey Women's Brief (Pack of 3)", category:"Innerwear", price:549, oldPrice:799, rating:4.9, reviews:412, emoji:"🔷", badge:"Bestseller", desc:"Premium Jockey cotton briefs for ultimate comfort. Anti-microbial treatment.", isNew:false },
+  { id:19, name:"Seamless Panty (Pack of 5)", category:"Innerwear", price:699, oldPrice:999, rating:4.8, reviews:334, emoji:"💙", badge:"Value Pack", desc:"Seamless invisible panties — perfect under fitted clothing. Soft & stretchy.", isNew:false },
+  { id:20, name:"Thermal Inner Suit", category:"Innerwear", price:999, oldPrice:1499, rating:4.7, reviews:128, emoji:"🔶", badge:"Winter", desc:"Warm thermal inner suit for cold winters. Retains body heat without bulk.", isNew:false },
+];
+
+// Generate 980 additional product stubs for scalability demo
+const categories = ["Dresses","Lingerie","Nightwear","Casual Wear","Innerwear","Activewear","Kidswear"];
+const emojis = ["👗","🩲","🌙","👖","👙","🎽","👒","🧥","🩱","🎀","💍","🌸","⭐","👚","🏋️"];
+const adjectives = ["Premium","Elegant","Casual","Stylish","Comfort","Classic","Trendy","Festive","Modern","Luxury"];
+const nouns = ["Set","Dress","Top","Wear","Collection","Special","Edition","Style","Look","Piece"];
+
+for(let i=21; i<=1000; i++){
+  const cat = categories[i % categories.length];
+  const basePrice = [299,399,499,599,699,799,899,999,1199,1299,1499,1599,1899][i % 13];
+  allProducts.push({
+    id: i,
+    name: `${adjectives[i%10]} ${nouns[(i+3)%10]} ${i}`,
+    category: cat,
+    price: basePrice,
+    oldPrice: Math.round(basePrice * 1.4),
+    rating: (3.8 + (i%12)*0.1).toFixed(1)*1,
+    reviews: 10 + (i % 200),
+    emoji: emojis[i % emojis.length],
+    badge: i % 7 === 0 ? "New" : (i % 11 === 0 ? "Sale" : ""),
+    desc: `Quality ${cat.toLowerCase()} item crafted for comfort and style. Made from premium materials to ensure durability and fashion-forward design.`,
+    isNew: i % 7 === 0
+  });
+}
+
+/* ===========================
+   STATE
+   =========================== */
+let cart = JSON.parse(localStorage.getItem('df-cart') || '[]');
+let wishlist = new Set(JSON.parse(localStorage.getItem('df-wishlist') || '[]'));
+let displayedCount = 20;
+let currentCategory = 'All';
+let qvProductId = null;
+let qvQty = 1;
+let checkoutStep = 1;
+let selectedPayment = 'upi';
+
+/* ===========================
+   PRODUCTS
+   =========================== */
+function getFilteredProducts(){
+  let prods = [...allProducts];
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const sort = document.getElementById('sort-select').value;
+  const price = document.getElementById('price-filter').value;
+  if(currentCategory !== 'All') prods = prods.filter(p=>p.category===currentCategory);
+  if(q) prods = prods.filter(p=>p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q));
+  if(price !== 'all'){
+    const [min,max] = price === '2000+' ? [2000,99999] : price.split('-').map(Number);
+    prods = prods.filter(p=>p.price>=min && p.price<=max);
+  }
+  if(sort==='price-asc') prods.sort((a,b)=>a.price-b.price);
+  else if(sort==='price-desc') prods.sort((a,b)=>b.price-a.price);
+  else if(sort==='rating') prods.sort((a,b)=>b.rating-a.rating);
+  else if(sort==='newest') prods.sort((a,b)=>b.isNew-a.isNew);
+  return prods;
+}
+
+function renderProducts(){
+  const filtered = getFilteredProducts();
+  const grid = document.getElementById('products-grid');
+  const shown = filtered.slice(0, displayedCount);
+  document.getElementById('products-count').textContent = `Showing ${shown.length} of ${filtered.length} products`;
+  document.getElementById('load-more-btn').style.display = filtered.length > displayedCount ? 'inline-flex' : 'none';
+  grid.innerHTML = shown.map(p=>productCard(p)).join('');
+}
+
+function productCard(p){
+  const inCart = cart.some(c=>c.id===p.id);
+  const inWish = wishlist.has(p.id);
+  return `
+    <div class="product-card">
+      <div class="product-img-wrap" onclick="openQuickView(${p.id})">
+        <span>${p.emoji}</span>
+        ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+        <div class="product-wish ${inWish?'active':''}" onclick="event.stopPropagation();toggleWishlist(${p.id},this)">${inWish?'❤️':'🤍'}</div>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${p.category}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-rating">
+          <span class="stars">${'★'.repeat(Math.floor(p.rating))}${p.rating%1>=0.5?'½':''}</span>
+          <span class="rating-count">(${p.reviews})</span>
+        </div>
+        <div class="product-footer">
+          <div>
+            <span class="product-price">₹${p.price.toLocaleString('en-IN')}</span>
+            <span class="product-price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
+          </div>
+          <button class="btn-cart" onclick="addToCart(${p.id})" title="Add to cart">+</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function setCategory(cat, el){
+  currentCategory = cat;
+  displayedCount = 20;
+  document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderProducts();
+}
+function filterProducts(){ displayedCount = 20; renderProducts(); }
+function loadMore(){ displayedCount += 20; renderProducts(); }
+
+/* ===========================
+   CART
+   =========================== */
+function saveCart(){ localStorage.setItem('df-cart', JSON.stringify(cart)); }
+function saveWishlist(){ localStorage.setItem('df-wishlist', JSON.stringify([...wishlist])); }
+
+function addToCart(id, qty=1){
+  const p = allProducts.find(x=>x.id===id);
+  const existing = cart.find(c=>c.id===id);
+  if(existing) existing.qty += qty;
+  else cart.push({...p, qty});
+  saveCart();
+  updateCartBadge();
+  renderCartBody();
+  showAddFeedback();
+}
+
+function updateCartBadge(){
+  const total = cart.reduce((s,c)=>s+c.qty, 0);
+  const badge = document.getElementById('cart-badge');
+  badge.style.display = total > 0 ? 'flex' : 'none';
+  badge.textContent = total;
+}
+
+function renderCartBody(){
+  const body = document.getElementById('cart-body');
+  const total = cart.reduce((s,c)=>s+(c.price*c.qty), 0);
+  document.getElementById('cart-total').textContent = `₹${total.toLocaleString('en-IN')}`;
+  if(cart.length===0){
+    body.innerHTML = `<div class="cart-empty"><div style="font-size:3rem;margin-bottom:0.5rem">🛍️</div><div style="font-weight:600;color:var(--text);margin-bottom:4px">Cart is empty</div><div style="font-size:0.85rem">Add some beautiful items!</div></div>`;
+    return;
+  }
+  body.innerHTML = cart.map(c=>`
+    <div class="cart-item">
+      <div class="cart-item-img">${c.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${c.name}</div>
+        <div class="cart-item-price">₹${(c.price*c.qty).toLocaleString('en-IN')}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeCartQty(${c.id},-1)">−</button>
+          <span class="qty-num">${c.qty}</span>
+          <button class="qty-btn" onclick="changeCartQty(${c.id},1)">+</button>
+        </div>
+      </div>
+      <button class="cart-remove" onclick="removeFromCart(${c.id})">🗑️</button>
+    </div>
+  `).join('');
+}
+
+function changeCartQty(id, delta){
+  const item = cart.find(c=>c.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) removeFromCart(id);
+  else { saveCart(); updateCartBadge(); renderCartBody(); }
+}
+function removeFromCart(id){
+  cart = cart.filter(c=>c.id!==id);
+  saveCart(); updateCartBadge(); renderCartBody();
+}
+
+function openCart(){ document.getElementById('cart-overlay').classList.add('open'); renderCartBody(); }
+function closeCart(){ document.getElementById('cart-overlay').classList.remove('open'); }
+function closeCartOnOverlay(e){ if(e.target===document.getElementById('cart-overlay')) closeCart(); }
+
+function showAddFeedback(){
+  const btn = event && event.target;
+  if(!btn) return;
+  const orig = btn.textContent;
+  btn.textContent = '✓';
+  btn.style.background = '#22C55E';
+  setTimeout(()=>{ btn.textContent = orig; btn.style.background = ''; }, 800);
+}
+
+/* ===========================
+   WISHLIST
+   =========================== */
+function toggleWishlist(id, el){
+  if(wishlist.has(id)){ wishlist.delete(id); el.textContent='🤍'; el.classList.remove('active'); }
+  else { wishlist.add(id); el.textContent='❤️'; el.classList.add('active'); }
+  saveWishlist();
+}
+function toggleWishlistQV(){
+  if(!qvProductId) return;
+  if(wishlist.has(qvProductId)) wishlist.delete(qvProductId);
+  else wishlist.add(qvProductId);
+  saveWishlist();
+}
+
+/* ===========================
+   QUICK VIEW
+   =========================== */
+function openQuickView(id){
+  const p = allProducts.find(x=>x.id===id);
+  qvProductId = id; qvQty = 1;
+  document.getElementById('qv-img').textContent = p.emoji;
+  document.getElementById('qv-cat').textContent = p.category;
+  document.getElementById('qv-name').textContent = p.name;
+  document.getElementById('qv-price').innerHTML = `₹${p.price.toLocaleString('en-IN')} <span style="font-size:0.9rem;color:var(--text-muted);text-decoration:line-through;font-family:'DM Sans'">₹${p.oldPrice.toLocaleString('en-IN')}</span>`;
+  document.getElementById('qv-rating').innerHTML = `<span class="stars">${'★'.repeat(Math.floor(p.rating))}</span><span class="rating-count">${p.rating} (${p.reviews} reviews)</span>`;
+  document.getElementById('qv-desc').textContent = p.desc;
+  document.getElementById('qv-qty').textContent = qvQty;
+  document.getElementById('quickview-modal').classList.add('open');
+}
+function changeQv(d){
+  qvQty = Math.max(1, qvQty+d);
+  document.getElementById('qv-qty').textContent = qvQty;
+}
+function addFromQV(){
+  if(qvProductId) addToCart(qvProductId, qvQty);
+  document.getElementById('quickview-modal').classList.remove('open');
+  openCart();
+}
+function closeQuickView(e){
+  if(e.target===document.getElementById('quickview-modal')) document.getElementById('quickview-modal').classList.remove('open');
+}
+
+/* ===========================
+   CHECKOUT
+   =========================== */
+function openCheckout(){
+  if(cart.length===0){ alert('Your cart is empty!'); return; }
+  checkoutStep = 1;
+  closeCart();
+  renderCheckout();
+  document.getElementById('checkout-modal').classList.add('open');
+}
+function closeCheckout(){ document.getElementById('checkout-modal').classList.remove('open'); }
+
+function getOrderSummaryHTML(){
+  const total = cart.reduce((s,c)=>s+(c.price*c.qty),0);
+  const items = cart.map(c=>`<div class="order-item"><span>${c.name} ×${c.qty}</span><span>₹${(c.price*c.qty).toLocaleString('en-IN')}</span></div>`).join('');
+  const shipping = total >= 999 ? 0 : 60;
+  return `${items}<div class="order-item"><span>Shipping</span><span>${shipping===0?'FREE':'₹60'}</span></div><div class="order-item"><span>Total</span><span>₹${(total+shipping).toLocaleString('en-IN')}</span></div>`;
+}
+
+function renderCheckout(){
+  const s = checkoutStep;
+  const content = document.getElementById('checkout-content');
+  let body = '';
+  if(s===1){
+    body = `
+    <div class="checkout-header">
+      <div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text)">Checkout</h2>
+      </div>
+      <div class="checkout-steps">
+        <div class="step active">1. Shipping</div>
+        <div class="step">2. Payment</div>
+        <div class="step">3. Confirm</div>
+      </div>
+    </div>
+    <div class="checkout-body">
+      <div class="checkout-section">
+        <div class="checkout-section-title">📦 Shipping Information</div>
+        <div class="checkout-grid">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="co-fname" placeholder="Priya" required/></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="co-lname" placeholder="Sharma" required/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="co-email" type="email" placeholder="priya@example.com"/></div>
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="co-phone" placeholder="+91 98765 43210"/></div>
+          <div class="form-group" style="grid-column:1/-1"><label class="form-label">Street Address</label><input class="form-input" id="co-addr" placeholder="123 Main St, Undri"/></div>
+          <div class="form-group"><label class="form-label">City</label><input class="form-input" id="co-city" placeholder="Pune"/></div>
+          <div class="form-group"><label class="form-label">Pincode</label><input class="form-input" id="co-pin" placeholder="411060"/></div>
+        </div>
+      </div>
+      <div class="order-summary">${getOrderSummaryHTML()}</div>
+      <button class="btn-primary" style="width:100%;padding:15px;font-size:1rem" onclick="checkoutNext()">Continue to Payment →</button>
+    </div>`;
+  } else if(s===2){
+    body = `
+    <div class="checkout-header">
+      <div><h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text)">Checkout</h2></div>
+      <div class="checkout-steps">
+        <div class="step done">✓ Shipping</div>
+        <div class="step active">2. Payment</div>
+        <div class="step">3. Confirm</div>
+      </div>
+    </div>
+    <div class="checkout-body">
+      <div class="checkout-section">
+        <div class="checkout-section-title">💳 Payment Method</div>
+        <div class="payment-options">
+          <label class="payment-opt ${selectedPayment==='upi'?'selected':''}">
+            <input type="radio" name="pay" value="upi" ${selectedPayment==='upi'?'checked':''} onchange="selectedPayment='upi';document.querySelectorAll('.payment-opt').forEach(e=>e.classList.remove('selected'));this.closest('.payment-opt').classList.add('selected');toggleCardFields()"/>
+            <span class="payment-icon">📱</span>
+            <div><div class="payment-label">UPI</div><div style="font-size:0.75rem;color:var(--text-muted)">Google Pay, PhonePe, Paytm</div></div>
+          </label>
+          <label class="payment-opt ${selectedPayment==='card'?'selected':''}">
+            <input type="radio" name="pay" value="card" ${selectedPayment==='card'?'checked':''} onchange="selectedPayment='card';document.querySelectorAll('.payment-opt').forEach(e=>e.classList.remove('selected'));this.closest('.payment-opt').classList.add('selected');toggleCardFields()"/>
+            <span class="payment-icon">💳</span>
+            <div><div class="payment-label">Credit / Debit Card</div><div style="font-size:0.75rem;color:var(--text-muted)">Visa, Mastercard, Rupay</div></div>
+          </label>
+          <label class="payment-opt ${selectedPayment==='netbanking'?'selected':''}">
+            <input type="radio" name="pay" value="netbanking" ${selectedPayment==='netbanking'?'checked':''} onchange="selectedPayment='netbanking';document.querySelectorAll('.payment-opt').forEach(e=>e.classList.remove('selected'));this.closest('.payment-opt').classList.add('selected');toggleCardFields()"/>
+            <span class="payment-icon">🏦</span>
+            <div><div class="payment-label">Net Banking</div><div style="font-size:0.75rem;color:var(--text-muted)">All major Indian banks</div></div>
+          </label>
+          <label class="payment-opt ${selectedPayment==='cod'?'selected':''}">
+            <input type="radio" name="pay" value="cod" ${selectedPayment==='cod'?'checked':''} onchange="selectedPayment='cod';document.querySelectorAll('.payment-opt').forEach(e=>e.classList.remove('selected'));this.closest('.payment-opt').classList.add('selected');toggleCardFields()"/>
+            <span class="payment-icon">💵</span>
+            <div><div class="payment-label">Cash on Delivery</div><div style="font-size:0.75rem;color:var(--text-muted)">Pay when you receive</div></div>
+          </label>
+        </div>
+        <div id="card-fields" style="display:${selectedPayment==='card'?'grid':'none'}" class="card-fields">
+          <div class="form-group"><label class="form-label">Card Number</label><input class="form-input" placeholder="1234 5678 9012 3456"/></div>
+          <div class="form-group" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <div><label class="form-label">Expiry</label><input class="form-input" placeholder="MM/YY"/></div>
+            <div><label class="form-label">CVV</label><input class="form-input" placeholder="•••"/></div>
+          </div>
+          <div class="form-group"><label class="form-label">Name on Card</label><input class="form-input" placeholder="Priya Sharma"/></div>
+        </div>
+        ${selectedPayment==='upi'?`<div style="margin-top:1rem"><div class="form-group"><label class="form-label">UPI ID</label><input class="form-input" placeholder="yourname@upi"/></div></div>`:''}
+      </div>
+      <div class="order-summary">${getOrderSummaryHTML()}</div>
+      <div style="display:flex;gap:1rem">
+        <button class="btn-outline" onclick="checkoutStep=1;renderCheckout()">← Back</button>
+        <button class="btn-primary" style="flex:1;padding:15px;font-size:1rem" onclick="checkoutNext()">Place Order 🔒</button>
+      </div>
+      <div style="text-align:center;margin-top:1rem;font-size:0.75rem;color:var(--text-muted)">🔒 256-bit SSL encrypted. Your data is safe.</div>
+    </div>`;
+  }
+  content.innerHTML = body;
+}
+
+function toggleCardFields(){
+  const f = document.getElementById('card-fields');
+  if(f) f.style.display = selectedPayment==='card' ? 'grid' : 'none';
+}
+
+function checkoutNext(){
+  if(checkoutStep===1){ checkoutStep=2; renderCheckout(); }
+  else if(checkoutStep===2){ showSuccess(); }
+}
+
+function showSuccess(){
+  const orderId = 'DF' + Date.now().toString().slice(-8);
+  const total = cart.reduce((s,c)=>s+(c.price*c.qty),0);
+  document.getElementById('checkout-content').innerHTML = `
+    <div style="padding:2rem;text-align:center">
+      <div style="font-size:5rem;animation:bounce 0.6s ease;margin-bottom:1rem">🎉</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--text);margin-bottom:0.5rem">Order Placed!</h2>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem">Thank you for shopping at Divyyansh Fashion. We'll notify you once your order is dispatched.</p>
+      <div class="order-summary" style="text-align:left">
+        <div class="order-item"><span>Order ID</span><span style="font-weight:700;color:var(--rose)">${orderId}</span></div>
+        <div class="order-item"><span>Total Paid</span><span>₹${total.toLocaleString('en-IN')}</span></div>
+        <div class="order-item"><span>Status</span><span style="color:#22C55E">✅ Confirmed</span></div>
+        <div class="order-item" style="border:none"><span>Estimated Delivery</span><span>3–5 Business Days</span></div>
+      </div>
+      <button class="btn-primary" style="width:100%;padding:15px;font-size:1rem;margin-top:1rem" onclick="closeCheckout();cart=[];saveCart();updateCartBadge()">Continue Shopping ✨</button>
+    </div>
+  `;
+}
+
+/* ===========================
+   TESTIMONIALS
+   =========================== */
+const testimonials = [
+  { name:"Monika Khichi", text:"Wow. What an amazing collection and depth in brands range. Great store ambience with pro active sales staff. The owner himself ensures customer satisfaction. Highly appreciated and strongly recommended.", stars:5 },
+  { name:"Sandhya Mohite", text:"I searched for a backless and strapless bra everywhere. I finally found it here! The bra is well-fitted, provides great support and comfort. Amazing collection!", stars:5 },
+  { name:"Anupam Dubey", text:"Great experience at Divyyansh Fashion. Staff was friendly, helped me find the right fit, and the prices were reasonable. Highly recommend for quality products at fair rates!", stars:5 },
+  { name:"Govind Ravle", text:"All types of apparel available with well-mannered staff and owner. Huge variety, fresh stock, and a very welcoming atmosphere. Must visit in Undri-Pisoli!", stars:5 },
+  { name:"Kalyani Rathod", text:"They have a huge variety in men and women nightwear and casual wear. The collection is extensive and prices are very affordable. Must visit this store!", stars:5 },
+  { name:"Priti Ghandge", text:"Multiple brands available in one shop — that brings real satisfaction! Very comfortable outfits and best quality products. The staff helped me choose the perfect fit.", stars:5 },
+  { name:"Bhagyashri Thakare", text:"Best collection, fresh stock, nice service. Super happy with my shopping experience here. Must visit for anyone looking for quality fashion in Pune!", stars:5 },
+  { name:"Digvijay Jadhav", text:"Amazing shopping experience, affordable prices, genuine products. Exactly what I was looking for. The variety is unmatched anywhere else in Pune.", stars:5 },
+  { name:"Jasmin Pandya", text:"Nice experience, has vast variety of products at very reasonable prices. Staff is knowledgeable and helpful. I found everything I needed in one stop!", stars:5 },
+  { name:"SONALY TRISAL", text:"Amazing shopping experience! Affordable prices and genuine products. The collection is truly extensive — from casuals to premium wear. Highly recommend!", stars:5 },
+];
+function renderTestimonials(){
+  const track = document.getElementById('testimonials-track');
+  track.innerHTML = testimonials.map(t=>`
+    <div class="testimonial-card">
+      <div class="testimonial-text">${t.text}</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">${t.name[0]}</div>
+        <div>
+          <div class="author-name">${t.name}</div>
+          <div class="author-meta"><span style="color:var(--gold)">${'★'.repeat(t.stars)}</span> Verified Buyer</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+function scrollCarousel(dir){
+  const track = document.getElementById('testimonials-track');
+  track.scrollBy({ left: dir * 340, behavior: 'smooth' });
+}
+// Drag support
+let isDragging = false, startX, scrollLeft;
+function initDrag(){
+  const track = document.getElementById('testimonials-track');
+  track.addEventListener('mousedown', e=>{isDragging=true;startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft;track.style.cursor='grabbing';});
+  track.addEventListener('mouseleave',()=>{isDragging=false;track.style.cursor='';});
+  track.addEventListener('mouseup',()=>{isDragging=false;track.style.cursor='';});
+  track.addEventListener('mousemove',e=>{if(!isDragging)return;e.preventDefault();const x=e.pageX-track.offsetLeft;track.scrollLeft=scrollLeft-(x-startX)*1.5;});
+}
+
+/* ===========================
+   THEME
+   =========================== */
+function toggleTheme(){
+  const curr = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', curr==='dark'?'light':'dark');
+  document.querySelector('[onclick="toggleTheme()"]').textContent = curr==='dark'?'🌙':'☀️';
+}
+
+/* ===========================
+   MOBILE NAV
+   =========================== */
+function toggleMobileNav(){
+  document.getElementById('mobile-nav').classList.toggle('open');
+}
+
+/* ===========================
+   REVEAL ANIMATIONS
+   =========================== */
+function initReveal(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+/* ===========================
+   ANIMATED COUNTERS
+   =========================== */
+function animateCounter(el, end, suffix=''){
+  let start=0; const dur=1500; const step=end/dur*16;
+  const timer = setInterval(()=>{
+    start = Math.min(start+step, end);
+    el.textContent = Math.floor(start).toLocaleString('en-IN') + suffix;
+    if(start>=end){ el.textContent=end.toLocaleString('en-IN')+suffix; clearInterval(timer); }
+  }, 16);
+}
+function initCounters(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        animateCounter(document.getElementById('cnt1'), 1000, '+');
+        animateCounter(document.getElementById('cnt2'), 500, '+');
+        animateCounter(document.getElementById('cnt3'), 5, '+');
+        obs.disconnect();
+      }
+    });
+  }, {threshold:0.5});
+  obs.observe(document.getElementById('cnt1'));
+}
+
+/* ===========================
+   CONTACT FORM
+   =========================== */
+function submitContact(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = '✅ Message Sent!';
+  btn.style.background = '#22C55E';
+  setTimeout(()=>{ btn.textContent='Send Message ✉️'; btn.style.background=''; e.target.reset(); }, 3000);
+}
+
+/* ===========================
+   SCROLL TOP
+   =========================== */
+window.addEventListener('scroll', ()=>{
+  const btn = document.getElementById('scroll-top');
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+/* ===========================
+   INIT
+   =========================== */
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderProducts();
+  renderTestimonials();
+  initReveal();
+  initCounters();
+  initDrag();
+  updateCartBadge();
+  renderCartBody();
+  // Staggered feature card animation
+  setTimeout(()=>{
+    document.querySelectorAll('.feature-card').forEach((c,i)=>{
+      c.style.transitionDelay = (i*0.08)+'s';
+    });
+  }, 100);
+});
+</script>
+</body>
+</html>
